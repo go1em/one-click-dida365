@@ -28,11 +28,11 @@ jobs:
           # 创建输出目录
           mkdir -p dist
           
-          # 使用 crx3 工具打包扩展
-          crx3 --key <(echo "$PRIVATE_KEY") -o dist/extension.crx .
+          # 使用 crx3 工具打包扩展（注意：源目录改为 src/）
+          crx3 --key <(echo "$PRIVATE_KEY") -o dist/oneclickdida.crx src/
           
           # 验证文件是否生成
-          if [ -f dist/extension.crx ]; then
+          if [ -f dist/oneclickdida.crx ]; then
             echo "CRX 打包成功!"
           else
             echo "CRX 打包失败!"
@@ -42,5 +42,5 @@ jobs:
       - name: Upload CRX as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: extension-crx
-          path: dist/extension.crx
+          name: oneclickdida-crx
+          path: dist/oneclickdida.crx
