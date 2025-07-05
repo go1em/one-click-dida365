@@ -3,6 +3,8 @@
   "name": "One-Click Dida365",
   "description": "只需单击一下，即可立即创建一个新的dida365任务，其中包含指向当前页面的链接！",
   "version": "1.0.0",
+  "key": "bXktbG9jYWwtdGVzdC1rZXk=", // 短key，Base64编码的"my-local-test-key"
+  // 生成的id: ocijmnfpgfmlkfgojikbfiefopinfdcl
   "background": {
     "service_worker": "/service-worker.js",
     "type": "module"
