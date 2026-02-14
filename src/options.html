@@ -4,12 +4,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>一键添加到滴答清单</title>
+  <title>一键滴答</title>
   <link rel="stylesheet" href="/css/bulma.min.css">
   <link rel="stylesheet" href="/css/bulma-switch.min.css">
   <link rel="stylesheet" href="/css/fontawesome/css/all.min.css">
   <script src="/lib/jquery-3.2.1.min.js"></script>
   <script src="/js/options.js"></script>
+  <style>
+	.pay {
+		width: 160px;
+		height: 160px;
+		background-image: url('icons/a6x05688drufcpxi0negrc9.png');
+		background-size: cover; /* 覆盖整个DIV */
+		background-position: center center; /* 居中显示 */
+		background-repeat: no-repeat; /* 不重复 */
+	}
+</style>
 </head>
 
 <body>
@@ -17,11 +27,11 @@
   <nav class="navbar is-spaced is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <div class="navbar-item">
-        <img src="/icons/icon256.png">
+        <img src="/icons/icon256.png" alt="滴答365">
       </div>
       <div class="navbar-item">
         <h1 class="title">
-          一键添加到滴答清单
+          一键滴答
         </h1>
       </div>
     </div>
@@ -33,15 +43,10 @@
           href="https://chrome.google.com/webstore/detail/one-click-ticktick/nbmkldaonngpkjagofgclbioanahipdp"
           target="_blank">
           <span class="icon "><i class="fa-brands fa-chrome"></i></span>
-          <span>Chrome 网上应用店</span>
+          <span>Chrome商店</span>
         </a>
       </div>
-      <div class="navbar-item">
-        <a class="button is-outlined" href="https://github.com/chrschorn/one-click-ticktick" target="_blank">
-          <span class="icon "><i class="fa-brands fa-github"></i></span>
-          <span>GitHub</span>
-        </a>
-      </div>
+      
     </div>
   </nav>
 
@@ -55,25 +60,25 @@
               任务设置
             </h4>
             <p class="subtitle">
-              新任务将具有以下设置
+              新建任务会有以下属性
             </p>
 
             <div class="field is-horizontal">
               <div class="field-label is-normal">
-                <label class="label">任务标题</label>
+                <label class="label">任务项</label>
               </div>
               <div class="field-body">
                 <div class="field">
                   <div class="control">
                     <div class="select is-fullwidth">
                       <select id="taskTitle">
-                        <option value="tabTitle">标签页标题</option>
-                        <option value="selectedText">所选文本</option>
+                        <option value="tabTitle">网页标题</option>
+                        <option value="selectedText">选择的文本</option>
                       </select>
                     </div>
                   </div>
                   <p class="help">
-                    “所选文本” 仅在使用右键菜单创建任务时有效。
+                    "选择的文本" 仅在使用右键新增任务时生效
                   </p>
                 </div>
               </div>
@@ -81,7 +86,7 @@
 
             <div class="field is-horizontal">
               <div class="field-label is-normal mt-2">
-                <label class="label">描述</label>
+                <label class="label">任务描述</label>
               </div>
               <div class="field-body">
                 <div class="field">
@@ -101,16 +106,17 @@
               <div class="field-body">
                 <div class="field">
                   <div class="control">
-                    <input id="targetList" class="input" type="text" placeholder="清单 ID（留空 = 收件箱）">
+                    <input id="targetList" class="input" type="text" placeholder="列表ID（留空=收集箱）">
                   </div>
                   <p class="help">
-                    留空则新任务将添加到你的滴答清单收件箱。
+                    留空则默认进入收集箱
                   </p>
                   <p class="help">
-                    若要自定义，请在浏览器中访问所需清单，查看 URL，例如 <span
-                      class="is-family-monospace">ticktick.com/webapp/#p/<span
-                        class="has-text-weight-bold">0f7f0ba69f32550a87cfc4d3</span>/tasks</span>。将清单 ID 复制到上述文本框中（在此示例中，应输入 <span
-                      class="is-family-monospace">0f7f0ba69f32550a87cfc4d3</span>）。
+                    要自定义，可以在浏览器中访问所需列表，查看URL，例如：<span
+                      class="is-family-monospace">dida365.com/webapp/#p/<span
+                        class="has-text-weight-bold">68614875e4b07dcf0b77d9a2</span>/tasks</span>. 将列表ID复制到
+                    上述文本字段（此时内容应为 <span
+                      class="is-family-monospace">68614875e4b07dcf0b77d9a2</span>).
                   </p>
                 </div>
               </div>
@@ -126,7 +132,7 @@
                     <input id="tagsList" class="input" type="text" placeholder="标签1 标签2">
                   </div>
                   <p class="help">
-                    用空格分隔的标签列表，将添加到创建的任务中。
+                    为创建的任务添加的标签列表，用空格分隔
                   </p>
                 </div>
               </div>
@@ -134,7 +140,7 @@
 
             <div class="field is-horizontal">
               <div class="field-label is-normal">
-                <label class="label">截止日期</label>
+                <label class="label">到期日</label>
               </div>
               <div class="field-body">
                 <div class="field">
@@ -144,8 +150,8 @@
                         <option value="-1">无</option>
                         <option value="0">今天</option>
                         <option value="1">明天</option>
-                        <option value="7">1 周后</option>
-                        <option value="30">1 个月后</option>
+                        <option value="7">一周内</option>
+                        <option value="30">一个月内</option>
                       </select>
                     </div>
                   </div>
@@ -176,10 +182,10 @@
 
           <div class="block pt-4">
             <h4 class="title is-4">
-              副作用设置
+              其它
             </h4>
             <p class="subtitle">
-              点击扩展程序按钮还可能产生以下副作用
+              点击扩展按钮可以有以下作用
             </p>
 
             <div class="field is-horizontal">
@@ -190,7 +196,7 @@
                 <div class="field">
                   <div class="control">
                     <input id="showNotification" type="checkbox" name="switchRoundedDefault" class="switch is-rounded">
-                    <label for="showNotification">任务创建时显示通知</label>
+                    <label for="showNotification">在任务创建时显示通知</label>
                   </div>
                 </div>
               </div>
@@ -198,13 +204,13 @@
 
             <div class="field is-horizontal">
               <div class="field-label is-normal mt-2">
-                <label class="label">标签页</label>
+                <label class="label">Tab</label>
               </div>
               <div class="field-body">
                 <div class="field">
                   <div class="control">
                     <input id="autoClose" type="checkbox" name="switchRoundedDefault" class="switch is-rounded">
-                    <label for="autoClose">任务创建时关闭当前标签页</label>
+                    <label for="autoClose">关闭当前任务的网页</label>
                   </div>
                 </div>
               </div>
@@ -213,25 +219,15 @@
         </div>
 
         <div class="column is-one-quarter is-offset-1">
-          <article class="message is-info">
-            <div class="message-header">
-              <p>问题与建议？</p>
-            </div>
-            <div class="message-body">
-              请在 <a href="https://github.com/chrschorn/one-click-ticktick/issues"
-                target="_blank">GitHub</a> 上报告错误或提出问题！
-            </div>
-          </article>
           <article class="message is-link">
-            <div class="message-header">
-              <p>捐赠支持</p>
+            <div class="message-header" >
+              <p>打赏</p>
             </div>
+
             <div class="message-body has-text-centered">
 
-              <a class="button is-rounded is-link" href="https://www.paypal.com/donate/?hosted_button_id=52Z66W73XG9SS">
-                <span class="icon"><i class="fa-solid fa-mug-hot"></i></span>
-                <span>请我喝杯咖啡</span>
-              </a>
+                <span class="icon pay"><i class="fa-solid fa-mug-hot"></i></span>
+                <span>买杯咖啡</span>
             </div>
           </article>
         </div>
@@ -242,7 +238,7 @@
 
   <section id="logoutSection" class="section" style="display:none">
     <div class="container is-max-desktop has-text-centered">
-      <button id="logout" class="button is-outlined">退出登录</button>
+      <button id="logout" class="button is-outlined">取消授权</button>
     </div>
   </section>
 
@@ -254,13 +250,22 @@
         </div>
         <div class="message-body">
           <div class="block">
-            请登录滴答清单以使用此扩展程序。你可能是首次登录，或者之前的认证已过期。
+           请登录滴答清单以使用该扩展。您未登录或登录已过期
           </div>
           <div class="block">
-            <strong>注意：</strong> 将会打开一个新的安全浏览器窗口，你需要在其中登录滴答清单。之后，系统会要求你授予此扩展程序代表你创建任务的权限 - 只需一键操作即可 :) 所有数据将存储在本地或你的浏览器云同步存储中（如果你已启用该功能）。请接受授权，以便此扩展程序正常工作！
+            <strong>提示:</strong> 
+            <p>系统将打开一个全新的安全浏览器窗口，你需要在其中登录<strong>滴答清单</strong></p>
+            <p>登录后，只需一键授权，即可允许此插件代表你创建任务</p>
+            <p>所有数据均保存在本地，或保存在你已开启的浏览器云端同步存储中</p>
+            <p>请完成授权，插件才能正常使用！</p>
           </div>
         </div>
       </article>
+      <div class="block has-text-centered">
+        <button id="login" class="button is-primary is-large js-modal-trigger" data-target="modal-js-example">
+          登录授权
+        </button>
+      </div>
     </div>
   </section>
 </body>
